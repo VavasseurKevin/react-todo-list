@@ -9,8 +9,18 @@ const App = () => {
   const [todo, setTodo] = useState('');
   const [todos, setTodos] = useState([]);
 
-  const doneHandler = () => {
-    console.log('Done');
+  const doneHandler = (todoId) => {
+    const index = todos.findIndex(todo => todo.id === todoId);
+    const duplicateTodos = [...todos];
+
+    duplicateTodos[index] = {
+      id: todos[index].id,
+      title: todos[index].title,
+      done:!todos[index].done,
+    }
+
+    setTodos(duplicateTodos);
+    console.log(todos)
   }
 
   const delHandler = (todoId) => {
@@ -31,7 +41,10 @@ const App = () => {
   return (
     <Layout>
       <Header/>
-      <Form todo={todo} submit={submitHandler} change={(e) => setTodo(e.target.value)}/>
+      <Form 
+        todo={todo} 
+        submit={submitHandler} 
+        change={(e) => setTodo(e.target.value)}/>
       <Lists 
         done={doneHandler} 
         del={delHandler} 

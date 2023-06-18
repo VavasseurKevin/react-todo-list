@@ -11,7 +11,9 @@ export const Lists = ({done, del, todos}) => {
               id={todo.id}
               title={todo.title} 
               delHandler={del} 
-              doneHandler={done}/>
+              doneHandler={done}
+              done={todo.done}  
+              />
            ))}
         </ul>
     </div>
