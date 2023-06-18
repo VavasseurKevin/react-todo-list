@@ -1,6 +1,6 @@
 import React from 'react'
 
-export const Form = ({todo, change, submit}) => {
+export const Form = ({todo, change, submit, error}) => {
   return (
     <form onSubmit={submit}>
     <div className='form-group row'>
@@ -11,6 +11,7 @@ export const Form = ({todo, change, submit}) => {
             value={todo} 
             onChange={change}/>
         </div>
+        {error && <small className='form-text text-danger'>{error}</small>}
 
         <div className='col-4'>
             <button type='submit' className='btn btn-success'>

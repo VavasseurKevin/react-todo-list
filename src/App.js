@@ -8,6 +8,7 @@ const App = () => {
 
   const [todo, setTodo] = useState('');
   const [todos, setTodos] = useState([]);
+  const [error, setError] = useState(null);
 
   const doneHandler = (todoId) => {
     const index = todos.findIndex(todo => todo.id === todoId);
@@ -34,7 +35,18 @@ const App = () => {
 
   const submitHandler = (e) => {
     e.preventDefault();
+
+    if (todo.length < 5)
+    {
+      setError("Une tâche doit contenir au minimum 5 caractères !");
+      return false;
+    }
     setTodos([{id : Date.now(),title: todo, done:false},...todos]);
+
+    setError(null);
+
+    setTodo(" ");
+    
     console.log(todos);
   }
 
@@ -44,7 +56,9 @@ const App = () => {
       <Form 
         todo={todo} 
         submit={submitHandler} 
-        change={(e) => setTodo(e.target.value)}/>
+        change={(e) => setTodo(e.target.value)}
+        error={error}
+        />
       <Lists 
         done={doneHandler} 
         del={delHandler} 
