@@ -1,10 +1,15 @@
 import React from 'react'
 
-export const Form = ({todo, change}) => {
+export const Form = ({todo, change, submit}) => {
   return (
+    <form onSubmit={submit}>
     <div className='form-group row'>
         <div className='col-8'>
-            <input type='text' className='form-control-plaintext' value={todo} onChange={change}/>
+            <input type='text' 
+            className='form-control-plaintext' 
+            placeholder='Que faire ?'
+            value={todo} 
+            onChange={change}/>
         </div>
 
         <div className='col-4'>
@@ -13,6 +18,7 @@ export const Form = ({todo, change}) => {
             </button>
         </div>
     </div>
+    </form>
   )
 }
 

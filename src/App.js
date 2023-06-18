@@ -6,24 +6,30 @@ import Form from "./components/Form";
 
 const App = () => {
 
-  const [todo, setTodo] = useState('')
+  const [todo, setTodo] = useState('');
+  const [todos, setTodos] = useState([]);
 
   const doneHandler = () => {
-    console.log('Done')
+    console.log('Done');
   }
 
   const delHandler = () => {
-    console.log('Delete')
+    console.log('Delete');
+  }
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+    setTodos([{title: todo},...todos]);
+    console.log(todos);
   }
 
   return (
     <Layout>
       <Header/>
-      <Form todo={todo}/>
+      <Form todo={todo} submit={submitHandler} change={(e) => setTodo(e.target.value)}/>
       <Lists 
         done={doneHandler} 
         del={delHandler} 
-        change={(e) => setTodo(e.target.value)}
         />
     </Layout>
   
