@@ -19,7 +19,7 @@ const App = () => {
 
   const submitHandler = (e) => {
     e.preventDefault();
-    setTodos([{title: todo},...todos]);
+    setTodos([{id : Date.now(),title: todo, done:false},...todos]);
     console.log(todos);
   }
 
@@ -30,6 +30,7 @@ const App = () => {
       <Lists 
         done={doneHandler} 
         del={delHandler} 
+        todos={todos}
         />
     </Layout>
   

@@ -1,14 +1,17 @@
 import React from 'react'
 import ListItem from './ListItem'
 
-export const Lists = ({done,del}) => {
+export const Lists = ({done, del, todos}) => {
   return (
     <div className='listWrap'>
         <ul className='list-group'>
-           <ListItem title='Title 1' delHandler={del} doneHandler={done}/>
-           <ListItem title='Title 2' delHandler={del} doneHandler={done}/>
-           <ListItem title='Title 3' delHandler={del} doneHandler={done}/>
-           <ListItem title='Title 4' delHandler={del} doneHandler={done}/>
+          {todos.map((todo) => (
+           <ListItem 
+              key={todo.id} 
+              title={todo.title} 
+              delHandler={del} 
+              doneHandler={done}/>
+           ))}
         </ul>
     </div>
   )
