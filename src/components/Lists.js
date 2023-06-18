@@ -1,21 +1,14 @@
 import React from 'react'
+import ListItem from './ListItem'
 
-export const Lists = () => {
+export const Lists = ({done,del}) => {
   return (
     <div className='listWrap'>
         <ul className='list-group'>
-            <li className='list-group-item d-flex justify-content-between'>
-            List Item
-            <div>
-                <button className='btn btn-sm btn-danger mr-2'>
-                    <i className='far fa-trash-alt'></i>
-                </button>
-                <button className='btn btn-sm btn-success'> 
-                <i className='fas fa-check'></i>
-                </button>
-            </div>
-            </li>
-        
+           <ListItem title='Title 1' delHandler={del} doneHandler={done}/>
+           <ListItem title='Title 2' delHandler={del} doneHandler={done}/>
+           <ListItem title='Title 3' delHandler={del} doneHandler={done}/>
+           <ListItem title='Title 4' delHandler={del} doneHandler={done}/>
         </ul>
     </div>
   )
