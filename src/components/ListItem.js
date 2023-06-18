@@ -3,7 +3,9 @@ import React from 'react'
 const ListItem = ({id, title, delHandler, doneHandler, done}) => {
   return (
     <div>
-       <li className='list-group-item d-flex justify-content-between'>
+       <li className={`list-group-item d-flex justify-content-between align-items-center ${
+        done ? 'bg-success' : ''
+      }`}>
         {done ? <del>{title}</del> : title}
             <div>
                 <button className='btn btn-sm btn-danger mr-2' onClick={() => delHandler(id)}>
