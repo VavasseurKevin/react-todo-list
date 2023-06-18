@@ -1,10 +1,13 @@
 import React from "react";
 import Layout from "./components/Layout";
+import Header from "./components/Header";
 
 const App = () => {
   return (
     <Layout>
-      <h1>Hello !</h1>
+      <Header/>
+      <h1>Bonjour !</h1>
+      Ici, c'est la liste !
     </Layout>
   
   )
