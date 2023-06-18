@@ -13,8 +13,13 @@ const App = () => {
     console.log('Done');
   }
 
-  const delHandler = () => {
+  const delHandler = (todoId) => {
+    if(window.confirm("Êtes-vous sûr ?"))
+    {
+    const updatesTodos = todos.filter(todo => todo.id !== todoId);
+    setTodos(updatesTodos);
     console.log('Delete');
+    }
   }
 
   const submitHandler = (e) => {

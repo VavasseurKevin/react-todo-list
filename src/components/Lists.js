@@ -8,6 +8,7 @@ export const Lists = ({done, del, todos}) => {
           {todos.map((todo) => (
            <ListItem 
               key={todo.id} 
+              id={todo.id}
               title={todo.title} 
               delHandler={del} 
               doneHandler={done}/>
