@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Layout from "./components/Layout";
 import Header from "./components/Header";
 import Lists from "./components/Lists";
@@ -9,6 +9,20 @@ const App = () => {
   const [todo, setTodo] = useState('');
   const [todos, setTodos] = useState([]);
   const [error, setError] = useState(null);
+
+   //Get todos List from LocalStorage
+   useEffect(()=>{
+    const getTodos = JSON.parse(localStorage.getItem('todos'))
+
+    if(getTodos) {
+      setTodos(getTodos);
+    }
+  }, [])
+
+  // Saving the tasks
+  useEffect(()=>{
+    localStorage.setItem('todos', JSON.stringify(todos))
+  }, [todos])
 
   const doneHandler = (todoId) => {
     const index = todos.findIndex(todo => todo.id === todoId);
@@ -46,7 +60,7 @@ const App = () => {
     setError(null);
 
     setTodo(" ");
-    
+
     console.log(todos);
   }
 
