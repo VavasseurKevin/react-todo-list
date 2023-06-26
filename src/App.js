@@ -3,6 +3,7 @@ import Layout from "./components/Layout";
 import Header from "./components/Header";
 import Lists from "./components/Lists";
 import Form from "./components/Form";
+import axios from "axios";
 
 const App = () => {
 
@@ -55,14 +56,19 @@ const App = () => {
       setError("Une tâche doit contenir au minimum 5 caractères !");
       return false;
     }
-    setTodos([{id : Date.now(),title: todo, done:false},...todos]);
-
-    setError(null);
-
-    setTodo(" ");
-
-    console.log(todos);
-  }
+    // Using Axios to make a POST request to the fictional API
+    axios
+      .post("http://localhost:3000/todos", { title: todo })
+      .then((response) => {
+        setTodos([{ id: Date.now(), title: todo, done: false }, ...todos]);
+        setError(null);
+        setTodo("");
+        console.log(todos);
+      })
+      .catch((error) => {
+        console.error("Erreur lors de la requête :", error);
+      });
+  };
 
   return (
     <Layout>
